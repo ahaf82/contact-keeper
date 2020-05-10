@@ -4,6 +4,9 @@ const path = require('path');
 
 const app = express();
 
+const sslRedirect = require("heroku-ssl-redirect");
+app.use(sslRedirect());
+
 // Connect DataBase
 connectDB();
 
