@@ -4,6 +4,9 @@ const path = require('path');
 
 const app = express();
 
+const sslRedirect = require("heroku-ssl-redirect");
+app.use(sslRedirect());
+
 // Connect DataBase
 connectDB();
 
@@ -14,6 +17,8 @@ app.use(express.json({ extended: false }));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/contacts', require('./routes/contacts'));
+
+if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
 
 // Serve static assets in production
 if(process.env.NODE_ENV === 'production') {
