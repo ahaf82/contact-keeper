@@ -18,8 +18,6 @@ app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/contacts', require('./routes/contacts'));
 
-if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
-
 // Serve static assets in production
 if(process.env.NODE_ENV === 'production') {
     // Set static folder   
